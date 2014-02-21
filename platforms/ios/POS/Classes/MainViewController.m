@@ -128,12 +128,18 @@
 {
     return [super webView:theWebView didFailLoadWithError:error];
 }
-
+*/
 - (BOOL) webView:(UIWebView*)theWebView shouldStartLoadWithRequest:(NSURLRequest*)request navigationType:(UIWebViewNavigationType)navigationType
 {
-    return [super webView:theWebView shouldStartLoadWithRequest:request navigationType:navigationType];
+    NSURL *targetURL = [request URL];
+    NSString *targetDomain = targetURL.host;
+    NSString *openErpDomain = [theWebView stringByEvaluatingJavaScriptFromString:@"localStorage.getItem('openerp-phonegap-domain');"];
+    if (targetDomain == Nil || [targetDomain isEqualToString:openErpDomain] || [targetDomain isEqualToString:@"accounts.openerp.com"]) {
+        return [super webView:theWebView shouldStartLoadWithRequest:request navigationType:navigationType];
+    } else {
+        return NO;
+    }
 }
-*/
 
 @end
 
