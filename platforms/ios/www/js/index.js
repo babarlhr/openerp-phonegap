@@ -35,8 +35,8 @@ var app = {
     onDeviceReady: function() {
         var parentElement = document.getElementById('domainform');
 
-        var listeningElement = parentElement.querySelector('.loading');
-        listeningElement.setAttribute('style', 'display:none;');
+        // var listeningElement = parentElement.querySelector('.loading');
+        // listeningElement.setAttribute('style', 'display:none;');
 
         var receivedElement = parentElement.querySelector('.loaded');
         var domainInputField = parentElement.querySelector('#domain');

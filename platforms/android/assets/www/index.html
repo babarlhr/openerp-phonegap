@@ -24,15 +24,19 @@
         <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>POS</title>
+        <link rel="stylesheet" type="text/css" href="fonts/lato/stylesheet.css" />
+        <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.0.3/css/font-awesome.min.css" />
+        <title>OpenERP POS</title>
     </head>
     <body>
         <div class="app">
             <div id="domainform" >
-                <p class="event loading">Connecting...</p>
+                <div class="logo">
+                    <i class="fa fa-shopping-cart"></i>
+                </div>
                 <div class="event loaded">
-                    <h1>OpenERP POS: ready to connect</h1>
-                    <input id="domain" type="text" name="domain" placeholder="mydomain.openerp.com">
+                    <h1>OpenERP POS</h1>
+                    <input id="domain" type="url" name="domain" placeholder="company.my.openerp.com">
                     <button id="submit">Connect</button>
                 </div>
             </div>

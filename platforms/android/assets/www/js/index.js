@@ -35,15 +35,21 @@ var app = {
     onDeviceReady: function() {
         var parentElement = document.getElementById('domainform');
 
-        var listeningElement = parentElement.querySelector('.loading');
-        listeningElement.setAttribute('style', 'display:none;');
+        // var listeningElement = parentElement.querySelector('.loading');
+        // listeningElement.setAttribute('style', 'display:none;');
 
         var receivedElement = parentElement.querySelector('.loaded');
         var domainInputField = parentElement.querySelector('#domain');
+
+        var domain = window.localStorage.getItem('openerp-phonegap-domain');
+        if (domain) domainInputField.value = domain;
+
         var domainSubmitButton = parentElement.querySelector('#submit');
         domainSubmitButton.onclick = function () {
             var domain = domainInputField.value;
-            window.location.href = "http://" + domain + "/web"; 
+            window.localStorage.setItem('openerp-phonegap-domain', domain);
+            // TODO Check if domain exists etc.
+            window.location.href = "https://" + domain + "/web"; 
         };
         receivedElement.setAttribute('style', 'display:block;');
     },
