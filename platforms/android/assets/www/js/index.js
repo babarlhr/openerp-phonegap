@@ -48,8 +48,18 @@ var app = {
         domainSubmitButton.onclick = function () {
             var domain = domainInputField.value;
             window.localStorage.setItem('openerp-phonegap-domain', domain);
-            // TODO Check if domain exists etc.
-            window.location.href = "https://" + domain + "/web"; 
+            
+            var url = "https://" + domain;// + "/web";
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function (data) {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        window.location.href = url;
+                    }
+                }
+            };
+            xhr.open('HEAD', url, true);
+            xhr.send();
         };
         receivedElement.setAttribute('style', 'display:block;');
     },
