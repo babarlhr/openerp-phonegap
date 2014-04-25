@@ -1,10 +1,3 @@
-function handleOpenURL (url) {
-    // TODO
-    setTimeout(function () {
-        alert(url);
-    }, 0);
-}
-
 var app = {
 
     initialize: function() {
@@ -28,14 +21,12 @@ var app = {
         domainSubmitButton.onclick = function () {
             var domain = domainInputField.value;
             
-            var url = "https://" + domain;// + "/web";
+            var url = "http://" + domain+"?debug=true";// + "/web";
             var xhr = new XMLHttpRequest();
             xhr.onreadystatechange = function (data) {
-                if (xhr.readyState == 4) {
-                    if (xhr.status == 200) {
-                        window.localStorage.setItem('openerp-phonegap-domain', domain);
-                        window.location.href = url;
-                    }
+                if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 301 || xhr.status == 302)) {
+                    window.localStorage.setItem('openerp-phonegap-domain', domain);
+                    window.location.href = url;
                 }
             };
             xhr.open('HEAD', url, true);

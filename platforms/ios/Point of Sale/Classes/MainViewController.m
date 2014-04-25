@@ -135,12 +135,14 @@
     NSURL *targetURL = [request URL];
     NSString *targetDomain = targetURL.host;
     NSString *openErpDomain = [theWebView stringByEvaluatingJavaScriptFromString:@"localStorage.getItem('openerp-phonegap-domain');"];
-
-    if (targetDomain == Nil || [targetDomain isEqualToString:openErpDomain]) {
-        return [super webView:theWebView shouldStartLoadWithRequest:request navigationType:navigationType];
+    return YES;
+/*
+    if (targetDomain == Nil || [openErpDomain hasPrefix:targetDomain]) {
+        return YES;
     } else {
         return NO;
     }
+*/
 }
 
 @end
