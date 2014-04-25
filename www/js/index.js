@@ -6,28 +6,19 @@ function handleOpenURL (url) {
 }
 
 var app = {
-    // Application Constructor
+
     initialize: function() {
         this.bindEvents();
     },
-    // Bind Event Listeners
-    //
-    // Bind any events that are required on startup. Common events are:
-    // 'load', 'deviceready', 'offline', and 'online'.
+
     bindEvents: function() {
+        // Events: 'load', 'deviceready', 'offline', and 'online'
         document.addEventListener('deviceready', this.onDeviceReady, false);
     },
-    // deviceready Event Handler
-    //
-    // The scope of 'this' is the event. In order to call the 'receivedEvent'
-    // function, we must explicity call 'app.receivedEvent(...);'
+
     onDeviceReady: function() {
         var parentElement = document.getElementById('domainform');
 
-        // var listeningElement = parentElement.querySelector('.loading');
-        // listeningElement.setAttribute('style', 'display:none;');
-
-        var receivedElement = parentElement.querySelector('.loaded');
         var domainInputField = parentElement.querySelector('#domain');
 
         var domain = window.localStorage.getItem('openerp-phonegap-domain');
@@ -50,6 +41,6 @@ var app = {
             xhr.open('HEAD', url, true);
             xhr.send();
         };
-        receivedElement.setAttribute('style', 'display:block;');
+        parentElement.querySelector('.loaded').setAttribute('style', 'display:block;');
     },
 };
