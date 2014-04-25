@@ -19,7 +19,7 @@ var app = {
 
         var domainSubmitButton = parentElement.querySelector('#submit');
         domainSubmitButton.onclick = function () {
-            var domain = domainInputField.value;
+            var domain = domainInputField.value.replace('http://','').replace('https://','');
             
             var url = "http://" + domain+"?debug=true";// + "/web";
             var xhr = new XMLHttpRequest();
